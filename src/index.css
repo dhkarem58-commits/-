@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Warm archival paper + olive-gold identity inspired by the book */
+  --bg-paper: #FAF7EE;
+  --bg-surface: #F2ECE0;
+  --bg-elevated: #FFFDF8;
+  --border-hairline: #DDD4BE;
+  --border-strong: #A69567;
+  --ink-primary: #1F1D16;
+  --ink-secondary: #4E4839;
+  --ink-muted: #6C6450;
+
+  /* Olive-Gold (Matn, primary scholarly accent, active highlights) */
+  --accent-gold: #826B24;
+  --accent-gold-bg: #F5F0E1;
+
+  /* Sage-Olive (Tarjih, Jumhur, mastery states) */
+  --accent-olive: #435B27;
+  --accent-olive-bg: #EDF2E5;
+
+  /* Warm Bronze (Qawa'id, Dawabit, Ta'rifat, Keypoints) */
+  --accent-bronze: #7A501C;
+  --accent-bronze-bg: #F7EFE2;
+
+  /* Deep Umber (Ziyadat, alerts, Hadith emphasis) */
+  --accent-umber: #6E3E26;
+  --accent-umber-bg: #F6ECE6;
+
+  --font-serif-ar: "Amiri", "Traditional Arabic", Georgia, serif;
+  --font-sans-ar: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+}
+
+.dark {
+  --bg-paper: #15140F;
+  --bg-surface: #1F1D15;
+  --bg-elevated: #262319;
+  --border-hairline: #3E3929;
+  --border-strong: #7B6F4B;
+  --ink-primary: #EFEAE0;
+  --ink-secondary: #C6BFA8;
+  --ink-muted: #9D957E;
+
+  --accent-gold: #D5BE6E;
+  --accent-gold-bg: #2A2516;
+
+  --accent-olive: #98B86B;
+  --accent-olive-bg: #1D2615;
+
+  --accent-bronze: #E0AB67;
+  --accent-bronze-bg: #2A2217;
+
+  --accent-umber: #E09474;
+  --accent-umber-bg: #2B1D17;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-paper);
+    color: var(--ink-primary);
+    font-family: var(--font-sans-ar);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-paper);
+    color: var(--ink-primary);
+    font-family: var(--font-sans-ar);
+    line-height: 1.75;
+    overflow-x: clip;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+  }
+}
+
+.font-matn {
+  font-family: var(--font-serif-ar);
+}
+
+.tabular-nums-ar {
+  font-variant-numeric: tabular-nums;
+}
+
+.headline-balance {
+  text-wrap: balance;
+}
+
+/* Custom subtle scrollbars for manuscript reading */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
